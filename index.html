@@ -6,7 +6,6 @@
     <title>The Learning Corner Academy - A safe space to learn</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* --- ESTILOS GENERALES Y PALETA --- */
         :root {
             --primary-blue: #2c5282; 
             --accent-blue: #4299e1;  
@@ -14,223 +13,78 @@
             --light-bg: #f7fafc;    
             --white: #ffffff;
             --text-dark: #2d3748;
-            --text-light: #718096;
-            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-            --whatsapp-green: #25d366;
+            --shadow: 0 10px 25px rgba(0,0,0,0.05);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
-        body { background-color: var(--light-bg); color: var(--text-dark); line-height: 1.6; padding-bottom: 40px; }
-        a { text-decoration: none; color: inherit; transition: 0.3s; }
-        ul { list-style: none; }
-        img { max-width: 100%; height: auto; display: block; }
-
-        /* --- NAVEGACIÓN --- */
-        header {
-            background-color: var(--white);
-            padding: 1rem 5%;
-            position: sticky;
-            top: 0; z-index: 100;
-            box-shadow: var(--shadow);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
+        body { background-color: var(--light-bg); color: var(--text-dark); line-height: 1.6; }
+        
+        /* Layout */
+        .container { max-width: 1200px; margin: 0 auto; padding: 2rem; }
+        
+        /* Header */
+        header { background: var(--white); padding: 1rem 5%; box-shadow: 0 2px 10px rgba(0,0,0,0.05); display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; }
         .logo-text { font-size: 1.5rem; font-weight: bold; color: var(--primary-blue); }
         .logo-text span { color: var(--logo-red); }
+        nav ul { display: flex; gap: 1.5rem; list-style: none; }
+        nav a { text-decoration: none; color: var(--text-dark); font-weight: 600; }
 
-        nav ul { display: flex; gap: 2rem; }
-        nav a:hover { color: var(--accent-blue); }
+        /* Hero */
+        .hero { background: var(--primary-blue); color: var(--white); padding: 4rem 5%; text-align: center; }
 
-        /* --- HERO --- */
-        .hero {
-            background-color: var(--primary-blue);
-            color: var(--white);
-            padding: 5rem 5%;
-            text-align: center;
-        }
-        .hero h1 { font-size: 2.8rem; margin-bottom: 1rem; }
-        .hero p { font-size: 1.2rem; opacity: 0.9; }
+        /* Grid de Cursos */
+        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin: 2rem 0; }
+        .card { background: var(--white); padding: 1.5rem; border-radius: 20px; box-shadow: var(--shadow); transition: 0.3s; text-align: center; }
+        .card img { width: 100%; border-radius: 15px; margin-bottom: 1rem; }
+        .card b { color: var(--primary-blue); display: block; margin-bottom: 0.5 milrem; }
 
-        /* --- SECCIONES --- */
-        .course-section {
-            padding: 4rem 5%;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            align-items: center;
-        }
-        .course-section:nth-child(even) { background-color: var(--white); }
-
-        .course-image {
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            background: #e2e8f0;
-            aspect-ratio: 16/9;
-            display: flex; align-items: center; justify-content: center;
-            font-weight: bold; color: #a0aec0;
-        }
-
-        .course-info h2 { font-size: 2.2rem; color: var(--primary-blue); margin-bottom: 1rem; }
-        .mascot { font-weight: 600; color: var(--accent-blue); margin-bottom: 1rem; display: block; }
+        /* SECCIÓN PRECIOS (Nuestros Paquetes) */
+        .pricing-section { padding: 5rem 5%; text-align: center; background: white; }
+        .pricing-section h2 { margin-bottom: 3rem; color: var(--primary-blue); font-size: 2rem; }
+        .pricing-grid { display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; }
         
-        .btn {
-            display: inline-block;
-            padding: 0.8rem 2rem;
-            background-color: var(--accent-blue);
-            color: var(--white);
-            border-radius: 50px;
-            font-weight: bold;
-            margin-top: 1rem;
-            border: none;
-            cursor: pointer;
-        }
-        .btn:hover { background-color: var(--primary-blue); transform: scale(1.05); }
-
-        /* --- PAQUETES --- */
-        #paquetes { padding: 5rem 5%; text-align: center; }
-        .pricing-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            max-width: 1100px;
-            margin: 3rem auto 0;
-        }
         .price-card {
             background: var(--white);
             padding: 3rem 2rem;
             border-radius: 20px;
-            box-shadow: var(--shadow);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            width: 320px;
             transition: 0.3s;
-        }
-        .price-card:hover { transform: translateY(-10px); }
-        .price-card h3 { color: var(--primary-blue); margin-bottom: 1rem; }
-        .price { font-size: 3rem; font-weight: 800; margin-bottom: 1.5rem; color: var(--text-dark); }
-
-        /* --- FOOTER & REDES SOCIALES --- */
-        footer {
-            background-color: var(--primary-blue);
-            color: var(--white);
-            padding: 4rem 5% 2rem;
-            text-align: center;
-        }
-
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 2rem;
         }
+        .price-card.featured { border: 2px solid var(--accent-blue); position: relative; }
+        .price-card h3 { color: var(--primary-blue); margin-bottom: 1.5rem; font-size: 1.4rem; }
+        .price-card .price { font-size: 3.5rem; font-weight: 800; margin-bottom: 1.5rem; color: var(--text-dark); }
+        .price-card p { color: #718096; font-size: 0.95rem; line-height: 1.4; }
 
-        .social-links {
-            display: flex;
-            gap: 1.5rem;
-            margin-top: 1rem;
-        }
-
-        .social-icon {
-            font-size: 1.8rem;
-            color: var(--white);
-            background: rgba(255,255,255,0.1);
-            width: 55px;
-            height: 55px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
+        /* FOOTER ESTILO IMAGEN */
+        footer { background: var(--primary-blue); color: var(--white); padding: 4rem 5% 2rem; text-align: center; }
+        .footer-info { margin-bottom: 2rem; font-size: 0.9rem; }
+        .footer-info p { margin: 5px 0; display: flex; align-items: center; justify-content: center; gap: 8px; }
+        
+        .social-links { display: flex; justify-content: center; gap: 1rem; margin-bottom: 2rem; }
+        .social-icon { 
+            width: 45px; height: 45px; 
+            background: rgba(255,255,255,0.1); 
+            border-radius: 50%; 
+            display: flex; align-items: center; justify-content: center; 
+            color: white; text-decoration: none; font-size: 1.2rem;
             transition: 0.3s;
         }
+        .social-icon:hover { background: rgba(255,255,255,0.2); transform: translateY(-3px); }
+        .copyright { opacity: 0.6; font-size: 0.8rem; margin-top: 2rem; }
 
-        .social-icon:hover {
-            background: var(--white);
-            transform: translateY(-5px);
-        }
+        /* BOTONES FLOTANTES */
+        .floating-buttons { position: fixed; bottom: 20px; right: 20px; display: flex; flex-direction: column; gap: 15px; z-index: 2000; }
+        
+        .float-btn { width: 55px; height: 55px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem; text-decoration: none; box-shadow: 0 4px 15px rgba(0,0,0,0.2); border: none; cursor: pointer; transition: 0.3s; }
+        .btn-mail { background-color: #f56565; }
+        .btn-whatsapp { background-color: #25D366; }
+        .float-btn:hover { transform: scale(1.1); }
 
-        .social-icon.fb:hover { color: #1877F2; }
-        .social-icon.ig:hover { color: #E4405F; }
-        .social-icon.tk:hover { color: #000000; }
-
-        .contact-box { font-size: 1.1rem; }
-        .contact-box i { margin-right: 10px; color: var(--accent-blue); }
-
-        /* --- FORMULARIO FLOTANTE --- */
-        #floating-contact {
-            position: fixed;
-            bottom: 110px; right: 30px; /* Subido para que no choque con WhatsApp */
-            width: 320px;
-            background: var(--white);
-            padding: 2rem;
-            border-radius: 20px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
-            z-index: 1000;
-            display: none; /* Se activa con el botón de mensaje */
-        }
-
-        #floating-contact.active { display: block; }
-
-        #contact-toggle {
-            position: fixed;
-            bottom: 105px; right: 30px;
-            background: var(--logo-red);
-            color: white; border: none;
-            width: 50px; height: 50px;
-            border-radius: 50%;
-            font-size: 1.2rem;
-            z-index: 1001;
-            cursor: pointer;
-            box-shadow: var(--shadow);
-            display: flex; align-items: center; justify-content: center;
-        }
-
-        /* --- BOTÓN WHATSAPP FLOTANTE --- */
-        .whatsapp-float {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background-color: var(--whatsapp-green);
-            color: #FFF;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 30px;
-            box-shadow: 2px 2px 10px rgba(0,0,0,0.3);
-            z-index: 1002;
-            transition: 0.3s;
-        }
-
-        .whatsapp-float:hover {
-            transform: scale(1.1);
-            background-color: #128c7e;
-        }
-
-        .form-group { margin-bottom: 1.2rem; text-align: left; }
-        .form-control {
-            width: 100%; padding: 0.8rem;
-            border: 1px solid #ddd; border-radius: 10px;
-            background: #f9f9f9;
-        }
-        .error-msg { color: var(--logo-red); font-size: 0.8rem; display: none; margin-top: 5px; }
-
-        /* --- RESPONSIVO --- */
-        @media (max-width: 768px) {
-            .course-section { grid-template-columns: 1fr; text-align: center; }
-            .course-section:nth-child(even) .course-image { order: -1; }
-            
-            #floating-contact {
-                width: calc(100% - 40px);
-                right: 20px;
-                bottom: 100px;
-            }
-            .whatsapp-float { bottom: 20px; right: 20px; width: 55px; height: 55px; }
-            #contact-toggle { bottom: 85px; right: 22px; }
-        }
+        @media (max-width: 768px) { .pricing-grid { flex-direction: column; align-items: center; } }
     </style>
 </head>
 <body>
@@ -239,7 +93,6 @@
         <div class="logo-text">A<span>Ñ</span> TLC</div>
         <nav>
             <ul>
-                <li><a href="#inicio">Inicio</a></li>
                 <li><a href="#ingles">Inglés</a></li>
                 <li><a href="#dibujo">Dibujo</a></li>
                 <li><a href="#paquetes">Precios</a></li>
@@ -247,146 +100,67 @@
         </nav>
     </header>
 
-    <section id="inicio" class="hero">
-        <h1>The Learning Corner Academy</h1>
+    <section class="hero">
+        <h1>Bienvenido a The Learning Corner Academy</h1>
         <p>A safe space to learn | Academia en Línea</p>
     </section>
 
-    <section id="ingles" class="course-section">
-        <div class="course-image">
-            <img src="buho.jpg" alt="Maestro Búho">
+    <div class="container">
+        <h2 id="ingles" style="margin: 2rem 0; color: var(--primary-blue);">Nuestros Cursos</h2>
+        <div class="gallery-grid">
+            <div class="card"><img src="image7.jpeg"><b>Coach de Inglés para Niños</b><p>Ambientes divertidos y seguros.</p></div>
+            <div class="card"><img src="image1.jpeg"><b>Jóvenes y Adultos</b><p>Enfoque profesional y dinámico.</p></div>
+            <div class="card"><img src="image4.jpeg"><b>Cursos Grupales</b><p>Interacción constante 100% online.</p></div>
+            <div class="card"><img src="image2.jpeg"><b>Digital Creator</b><p>Taller de verano y herramientas digitales.</p></div>
+            <div class="card"><img src="image3.jpeg"><b>Creadores de Mundos</b><p>Dibujo y creación de personajes.</p></div>
+            <div class="card"><img src="image6.jpeg"><b>Speaking Skill</b><p>Taller intensivo de conversación.</p></div>
         </div>
-        <div class="course-info">
-            <span class="mascot">Acompañados por el Maestro Búho 🦉</span>
-            <h2>Clases de Inglés</h2>
-            <p>Talleres de habilidades y clases dinámicas para todas las edades. Creamos un ambiente seguro para que pierdas el miedo a hablar.</p>
-            <a href="https://wa.me/525513964860?text=Hola!%20Me%20gustaría%20recibir%20el%20temario%20de%20Inglés" target="_blank" class="btn">Solicitar Temario</a>
-        </div>
-    </section>
+    </div>
 
-    <section id="dibujo" class="course-section">
-        <div class="course-info">
-            <span class="mascot">Creatividad con el Zorro Artista 🦊</span>
-            <h2>Dibujo Digital</h2>
-            <p>Desde el primer trazo hasta ilustraciones profesionales. Domina las herramientas digitales y técnicas de dibujo contemporáneo.</p>
-            <a href="https://wa.me/525513964860?text=Hola!%20Quiero%20conocer%20los%20requisitos%20para%20Dibujo%20Digital" target="_blank" class="btn">Ver Requisitos</a>
-        </div>
-        <div class="course-image">
-            <img src="zorro.jpg" alt="Zorro Artista">
-        </div>
-    </section>
-
-    <section id="paquetes">
+    <section id="paquetes" class="pricing-section">
         <h2>Nuestros Paquetes</h2>
         <div class="pricing-grid">
             <div class="price-card">
                 <h3>Individual</h3>
-                <p class="price">$---</p>
+                <div class="price">$---</div>
                 <p>Acceso a un curso completo por mes.</p>
             </div>
-            <div class="price-card" style="border: 2px solid var(--accent-blue);">
+            <div class="price-card featured">
                 <h3>Academy Pack</h3>
-                <p class="price">$---</p>
+                <div class="price">$---</div>
                 <p>Inglés + Dibujo Digital con descuento especial.</p>
             </div>
             <div class="price-card">
                 <h3>Talleres</h3>
-                <p class="price">$---</p>
+                <div class="price">$---</div>
                 <p>Clases intensivas los fines de semana.</p>
             </div>
         </div>
     </section>
 
     <footer>
-        <div class="footer-content">
-            <div class="contact-box">
-                <p><i class="fa-solid fa-phone"></i> 55 1396 4860</p>
-                <p><i class="fa-solid fa-location-dot"></i> ACADEMIA EN LÍNEA</p>
-            </div>
-
-            <div class="social-links">
-                <a href="#" target="_blank" class="social-icon fb" title="Facebook">
-                    <i class="fa-brands fa-facebook-f"></i>
-                </a>
-                <a href="#" target="_blank" class="social-icon ig" title="Instagram">
-                    <i class="fa-brands fa-instagram"></i>
-                </a>
-                <a href="#" target="_blank" class="social-icon tk" title="TikTok">
-                    <i class="fa-brands fa-tiktok"></i>
-                </a>
-            </div>
-
-            <p style="opacity: 0.7; font-size: 0.9rem;">&copy; 2026 The Learning Corner Academy. Todos los derechos reservados.</p>
+        <div class="footer-info">
+            <p><i class="fa-solid fa-phone"></i> 55 1396 4860</p>
+            <p><i class="fa-solid fa-location-dot"></i> ACADEMIA EN LÍNEA</p>
         </div>
+
+        <div class="social-links">
+            <a href="#" class="social-icon"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#" class="social-icon"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" class="social-icon"><i class="fa-brands fa-tiktok"></i></a>
+        </div>
+
+        <p class="copyright">© 2026 The Learning Corner Academy. Todos los derechos reservados.</p>
     </footer>
 
-    <a href="https://wa.me/525513964860?text=Hola!%20Vengo%20de%20la%20página%20web%20y%20busco%20información%20sobre%20la%20academia" 
-       class="whatsapp-float" 
-       target="_blank" 
-       rel="noopener noreferrer">
-        <i class="fa-brands fa-whatsapp"></i>
-    </a>
-
-    <button id="contact-toggle" onclick="toggleContact()">
-        <i class="fa-solid fa-envelope"></i>
-    </button>
-
-    <div id="floating-contact">
-        <h3 style="margin-bottom:1.5rem; color:var(--primary-blue)">Déjanos tus datos</h3>
-        <form id="academyForm" onsubmit="return validateForm(event)">
-            <div class="form-group">
-                <input type="text" id="email" class="form-control" placeholder="Correo electrónico">
-                <span id="email-error" class="error-msg">Ingresa un correo válido.</span>
-            </div>
-            <div class="form-group">
-                <input type="text" id="phone" class="form-control" placeholder="Teléfono (10 dígitos)" maxlength="10">
-                <span id="phone-error" class="error-msg">Deben ser 10 números.</span>
-            </div>
-            <div class="form-group">
-                <textarea id="message" class="form-control" placeholder="¿Cómo podemos ayudarte?"></textarea>
-            </div>
-            <button type="submit" class="btn" style="width:100%;">Enviar Mensaje</button>
-        </form>
+    <div class="floating-buttons">
+        <button class="float-btn btn-mail" onclick="alert('Abriendo formulario de contacto...')">
+            <i class="fa-solid fa-envelope"></i>
+        </button>
+        <a href="https://wa.me/525513964860" class="float-btn btn-whatsapp" target="_blank">
+            <i class="fa-brands fa-whatsapp"></i>
+        </a>
     </div>
 
-    <script>
-        function toggleContact() {
-            const f = document.getElementById('floating-contact');
-            const b = document.getElementById('contact-toggle');
-            f.classList.toggle('active');
-            b.innerHTML = f.classList.contains('active') ? '<i class="fa-solid fa-xmark"></i>' : '<i class="fa-solid fa-envelope"></i>';
-        }
-
-        function validateForm(e) {
-            e.preventDefault();
-            const email = document.getElementById('email');
-            const phone = document.getElementById('phone');
-            const eErr = document.getElementById('email-error');
-            const pErr = document.getElementById('phone-error');
-            
-            let ok = true;
-
-            if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value)) {
-                eErr.style.display = 'block'; email.style.borderColor = 'red';
-                ok = false;
-            } else { eErr.style.display = 'none'; email.style.borderColor = '#ddd'; }
-
-            if (!/^\d{10}$/.test(phone.value)) {
-                pErr.style.display = 'block'; phone.style.borderColor = 'red';
-                ok = false;
-            } else { pErr.style.display = 'none'; phone.style.borderColor = '#ddd'; }
-
-            if (ok) {
-                alert('¡Datos recibidos! Nos comunicaremos contigo pronto.');
-                document.getElementById('academyForm').reset();
-                toggleContact();
-            }
-            return ok;
-        }
-
-        document.getElementById('phone').addEventListener('input', function(e) {
-            e.target.value = e.target.value.replace(/\D/g, '');
-        });
-    </script>
 </body>
 </html>
